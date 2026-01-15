@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<body>
+    <h1>TECH-ECOMMERCE</h1>
+    <div class="contenedor-productos">
+        
+        <div class="tarjeta">
+            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" alt="Laptop">
+            <h3>MacBook Air</h3>
+            <p class="precio">$999</p>
+        </div>
+
+        <div class="tarjeta">
+            <img src="https://www.clarin.com/2024/08/30/UVoF_GoQz_360x240__1.jpg" alt="Audifonos">
+            <h3>Audífonos</h3>
+            <p class="precio">$249</p>
+        </div>
+
+        <div class="tarjeta">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="Reloj">
+            <h3>Smart Watch</h3>
+            <p class="precio">$199</p>
+        </div>
+    </div>
+</body>
+<head>
+    <meta charset="UTF-8">
+    <title>TECH-ECOMMERCE</title>
+    <style>
+        /* Estilo del fondo de la pagina*/
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa; 
+            margin: 0;
+            padding: 40px;
+            color: #333;
+        }
+
+        h1 { text-align: center; color: #1a1a1a; margin-bottom: 40px; }
+
+        /*CATALOGO EXHIBICION*/
+        .contenedor-productos {
+            display: grid;
+            /* Crea columnas automáticas de mínimo 250px */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto; /* Centra el catálogo */
+        }
+
+        /* Tarjeta del producto */
+        .tarjeta {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Sombra suave */
+            transition: transform 0.3s ease; /* Efecto al pasar el mouse */
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-10px); /* Se eleva un poco al señalarla */
+        }
+
+        /* Hace que las imagenes se vean normales */
+        .tarjeta img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* Evita que la imagen se deforme */
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tarjeta h3 { margin: 10px 0; font-size: 1.2rem; }
+        
+        .precio {
+            color: #28a745; 
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+    </style>
+</head>
+</html>
