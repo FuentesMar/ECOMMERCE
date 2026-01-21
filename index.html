@@ -8,9 +8,16 @@
 </head>
 <body>
 
-    <h1>TECH-ECOMMERCE</h1>
+    <header>
+        <h1>TECH-ECOMMERCE</h1>
+        <nav class="navegacion-carrito">
+            <button id="abrir-carrito" class="btn-ver-carrito">
+                🛒 Ver Carrito (<span id="contador-productos">0</span>)
+            </button>
+        </nav>
+    </header>
 
-    <div class="contenedor-productos">
+    <main class="contenedor-productos">
         <div class="tarjeta">
             <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" alt="Laptop">
             <h3>MacBook Air</h3>
@@ -31,13 +38,21 @@
             <p class="precio">$200</p>
             <button class="btn-agregar" data-nombre="Smart Watch" data-precio="200">Agregar al carrito</button>
         </div>
-    </div>
+    </main>
 
-    <div class="seccion-carrito">
-        <h2>🛒 Tu Carrito</h2>
-        <ul id="lista-carrito"></ul>
-        <p class="total-texto"><strong>Total: $ <span id="total-pago">0</span></strong></p>
-        <button id="btn-vaciar" class="btn-vaciar">Vaciar Carrito</button>
+    <div id="carrito-modal" class="modal">
+        <div class="modal-contenido">
+            <div class="modal-header">
+                <h2>Tu Pedido</h2>
+                <span id="cerrar-carrito" class="cerrar">&times;</span>
+            </div>
+            <ul id="lista-carrito">
+                </ul>
+            <div class="modal-footer">
+                <p class="total-texto">Total: $ <span id="total-pago">0</span></p>
+                <button id="btn-vaciar" class="btn-vaciar">Vaciar Carrito</button>
+            </div>
+        </div>
     </div>
 
     <script src="carrito.js"></script>
