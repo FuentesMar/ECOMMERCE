@@ -3,58 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TECH-ECOMMERCE</title>
+    <title>The Fragrance Lab</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header>
-        <h1>TECH-ECOMMERCE</h1>
-        <nav class="navegacion-carrito">
-            <button id="abrir-carrito" class="btn-ver-carrito">
-                🛒 Ver Carrito (<span id="contador-productos">0</span>)
+    <!-- HEADER - Semántica HTML5 -->
+    <header class="bg-dark text-white py-4 sticky-top shadow">
+        <nav class="navbar navbar-expand-lg navbar-dark container-lg">
+            <a class="navbar-brand fw-bold" href="#">The Fragrance Lab</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button id="btn-favoritos" class="btn btn-outline-light me-2">
+                            <i class="fas fa-heart"></i> Favoritos <span id="contador-favoritos" class="badge bg-danger">0</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="btn-carrito" class="btn btn-outline-light me-2">
+                            <i class="fas fa-shopping-cart"></i> Carrito <span id="contador-carrito" class="badge bg-warning text-dark">0</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="btn-usuario" class="btn btn-outline-light">
+                            <i class="fas fa-user"></i> <span id="nombre-usuario">Ingresa</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
 
-    <main class="contenedor-productos">
-        <div class="tarjeta">
-            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" alt="Laptop">
-            <h3>MacBook Air</h3>
-            <p class="precio">$1000</p>
-            <button class="btn-agregar" data-nombre="MacBook Air" data-precio="1000">Agregar al carrito</button>
-        </div>
-
-        <div class="tarjeta">
-            <img src="https://www.clarin.com/2024/08/30/UVoF_GoQz_360x240__1.jpg" alt="Audifonos">
-            <h3>Audífonos</h3>
-            <p class="precio">$250</p>
-            <button class="btn-agregar" data-nombre="Audífonos" data-precio="250">Agregar al carrito</button>
-        </div>
-
-        <div class="tarjeta">
-            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="Reloj">
-            <h3>Smart Watch</h3>
-            <p class="precio">$200</p>
-            <button class="btn-agregar" data-nombre="Smart Watch" data-precio="200">Agregar al carrito</button>
-        </div>
+    <!-- MAIN - Sección principal con productos -->
+    <main class="container-lg py-5">
+        <h1 class="text-center mb-5">Nuestros Productos</h1>
+        
+        <section id="productos-grid" class="row g-4">
+            <!-- Los productos se cargan aquí con JavaScript -->
+        </section>
     </main>
 
-    <div id="carrito-modal" class="modal">
-        <div class="modal-contenido">
-            <div class="modal-header">
-                <h2>Tu Pedido</h2>
-                <span id="cerrar-carrito" class="cerrar">&times;</span>
-            </div>
-            <ul id="lista-carrito">
-                </ul>
-            <div class="modal-footer">
-                <p class="total-texto">Total: $ <span id="total-pago">0</span></p>
-                <button id="btn-vaciar" class="btn-vaciar">Vaciar Carrito</button>
+    <!-- MODAL LOGIN -->
+    <div id="login-modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Iniciar Sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formulario-login">
+                        <div class="mb-3">
+                            <label for="usuario" class="form-label">Usuario</label>
+                            <input type="text" class="form-control" id="usuario" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100">Ingresar</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- MODAL CARRITO -->
+    <div id="carrito-modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tu Carrito</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="lista-carrito" class="list-group">
+                        <!-- Los productos del carrito se cargan aquí -->
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <p class="me-auto"><strong>Total: $<span id="total-carrito">0</span></strong></p>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="btn-vaciar-carrito" type="button" class="btn btn-danger">Vaciar Carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FAVORITOS -->
+    <div id="favoritos-modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mis Favoritos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="lista-favoritos" class="list-group">
+                        <!-- Los productos favoritos se cargan aquí -->
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="carrito.js"></script>
 </body>
 </html>
